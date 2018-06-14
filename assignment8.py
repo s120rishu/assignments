@@ -1,6 +1,18 @@
 import time
 import datetime
 #Q1
+'''This is a module that provide various time related functions,has a tuple of 9 numbers
+ie index  Attributes         values
+   0   4-digit year  (2008)
+   1   month         (1 to 12)
+   2   Day           (1 to 31)
+   3   Hour          (0 to 23)
+   4   Minute        (0 to 59)
+   5   second        (0 t0 59)
+   6   Day of week   (0 to 6)
+   7   Day of year   (-1 to 366 )
+   8   Daylight saving (-1,0,1 where -1 means library determines DST
+'''
 print(time.gmtime())
 #Q2
 print(time.asctime())
