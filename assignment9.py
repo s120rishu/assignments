@@ -46,9 +46,9 @@ class Movie_Details():
 q=Movie_Details('3 Iditios','Amir',2008,6)
 #update function
 print("updated data is")
-q.n="sonu ke titu sweety"
-q.an="kartik"
-q.y=2018
+q.n="ram lakhan"
+q.an="jekky shroff"
+q.y=1993
 q.r=4
 q.display()
 print('\n')
