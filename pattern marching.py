@@ -23,11 +23,11 @@ match=re.compile("[,|;|_]")
 sentence=match.sub(" ",sentence)
 print(sentence)
 
-##optional question
+##optional question THIS question is not don yet
 tweet ='''
 Good advice! RT @TheNextWeb: What I would do differently if 
 I was learning to code today 
-http://t.co/lbwej0pxOd cc: @garybernhardt #rstats'''
+http://t.co/lbwej0pxOd cc: @garybernhardt #rstats'''    
 message=re.compile("[@|:|#|!]")
 tweet=message.sub(" ",tweet)
 l=re.findall("[http]")
