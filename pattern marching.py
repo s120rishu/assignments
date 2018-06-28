@@ -24,11 +24,26 @@ sentence=match.sub(" ",sentence)
 print(sentence)
 
 ##optional question THIS question is not don yet
-tweet ='''
-Good advice! RT @TheNextWeb: What I would do differently if 
-I was learning to code today 
-http://t.co/lbwej0pxOd cc: @garybernhardt #rstats'''    
-message=re.compile("[@|:|#|!]")
-tweet=message.sub(" ",tweet)
-l=re.findall("[http]")
+
+print("optional question")
+print("desired_output=")
+tweet = "Good advice! RT @TheNextWeb: What I would do differently if I was learning to code today http://t.co/lbwej0pxOd cc: @garybernhardt #rstat"
+reg=re.compile("[!]")
+for i in sentence:
+    tweet=reg.sub("",tweet)
+reg=re.compile("[R][T]")
+for i in sentence:
+    tweet=reg.sub("",tweet)
+reg=re.compile("[@]")
+for i in sentence:
+    tweet=reg.sub("",tweet)
+reg=re.compile("[T][h][e][N][e][x][t][W][e][b][:] ")
+for i in sentence:
+    tweet=reg.sub("",tweet)
+reg=re.compile(" [h][t][t][p][:][/][/][t][.][c][o][/][l][b][w][e][j][p][x][O][d]")
+for i in sentence:
+    tweet=reg.sub("",tweet)
+reg=re.compile("[c][c][:][@][g][a][r][y][b][e][r][n][h][a][r][d][t][#][r][s][t][a][t]")
+for i in sentence:
+    tweet=reg.sub("",tweet)
 print(tweet)
