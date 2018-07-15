@@ -1,16 +1,11 @@
 from tkinter import *
-
-import tkfilebrowser
-
+import  tkinter.colorchooser as ch
+import tkinter.filedialog
+from tkinter.filedialog import *
 from tkinter import messagebox
-
 import datetime
-
 import webbrowser
-
-from tkfilebrowser import askopenfilename, asksaveasfilename
-
-
+filename = None
 def line():
     lin = "_" * 60
 
@@ -40,7 +35,7 @@ def italic():
 
 
 def font():
-    (triple, color) = askcolor()
+    (triple, color) =ch.askcolor()
 
     if color:
         text.config(foreground=color)
@@ -54,30 +49,27 @@ def about():
     pass
 
 
+def newfile():
+    global  filename
+    filename = 'untitled'
+    text.delete(0.0,END)
 def opn():
-    text.delete(1.0, END)
-
-    file = open(askopenfilename(), 'r')
-
-    if file != '':
-
-        txt = file.read()
-
-        text.insert(INSERT, txt)
-
-    else:
-
-        pass
-
-
+    f= askopenfile(mode='r')
+    t=f.read()
+    text.delete(0.0,END)
+    text.insert(0.0, t)
 def save():
-    global text
-    t=text.get(1.0,"end-1c")
-    filename =tkfilebrowser.asksaveasfilename()
-    file1=open(filename,'w+')
-    file1.write(t)
-    file1.close()
-
+    t=text.get(0.0,END)
+    f=open(filename, 'w')
+    f.write(t)
+    f.close()
+def saveas():
+    f=asksaveasfile(mode='w',defaultextension='.txt')
+    t=text.get(0.0,END)
+    try:
+        f.write(t.rstrip())
+    except:
+        messagebox.showerror(titles="afkfa",message="unable to save file")
 def copy():
     text.clipboard_clear()
 
@@ -97,9 +89,9 @@ def paste():
 
 
 def clear():
-    sel = text.get(SET_FIRST, SET_LAST)
+    sel = text.get(SEL_FIRST, SEL_LAST)
 
-    text.delete(SET_FIRST, SET_LAST)
+    text.delete(SEL_FIRST, SEL_LAST)
 
 
 def clearall():
@@ -107,7 +99,7 @@ def clearall():
 
 
 def background():
-    (triple, color) = askcolor()
+    (triple, color) =ch.askcolor()
 
     if color:
         text.config(background=color)
@@ -140,9 +132,9 @@ filemenu = Menu(root)
 root.config(menu=menu)
 
 menu.add_cascade(label="File", menu=filemenu)
-
+filemenu.add_command(label="New File", command=newfile)
 filemenu.add_command(label="Open...", command=opn)
-
+filemenu.add_command(label='SaveAs', command=saveas)
 filemenu.add_command(label="Save...", command=save)
 
 filemenu.add_separator()
